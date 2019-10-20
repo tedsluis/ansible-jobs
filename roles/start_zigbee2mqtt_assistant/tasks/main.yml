@@ -1,0 +1,23 @@
+---
+# tasks file for start_zigbee2mqtt_assistant
+
+# Get Z2MA_SETTINGS__MQTTPASSWORD password
+- name: "Include Ansible secrets to get Z2MA_SETTINGS__MQTTPASSWORD."
+  include_vars: /home/tedsluis/.ansible_secrets.yaml
+
+- debug:
+    msg: "my Z2MA_SETTINGS__MQTTPASSWORD is '{{ Z2MA_SETTINGS__MQTTPASSWORD }}'."
+
+- name: Start a container
+  docker_container:
+    name: zigbee2mqttassistant
+    image: carldebilly/zigbee2mqttassistant
+    state: started
+    restart: yes
+    ports:
+     - "8830:80"
+    env:
+        Z2MA_SETTINGS__MQTTUSERNAME: "{{ Z2MA_SETTINGS__MQTTUSERNAME }}"
+        Z2MA_SETTINGS__MQTTPASSWORD: "{{ Z2MA_SETTINGS__MQTTPASSWORD }}"
+        Z2MA_SETTINGS__MQTTSERVER: "{{ Z2MA_SETTINGS__MQTTSERVER }}"
+

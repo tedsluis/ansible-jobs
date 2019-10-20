@@ -1,0 +1,6 @@
+#!/usr/bin/env ansible-playbook
+
+- name: zigbee2mqtt homeassistant
+  hosts: nuc
+  roles:
+  - start_zigbee2mqtt_assistant
