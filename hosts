@@ -1,0 +1,74 @@
+[armbian]
+ted1090-[6:7]
+
+[armbian:vars]
+ansible_user=pi
+accounts='["root", "pi"]'
+TLS_CA_File='/etc/ssl/certs/ca-certificates.crt'
+
+[centos]
+centos1
+
+[centos:vars]
+ansible_user=root
+accounts='["root", "tedsluis"]'
+TLS_CA_File='/etc/pki/tls/certs/ca-bundle.crt'
+
+[debian]
+debian1
+
+[debian:vars]
+ansible_user=root
+accounts='["root", "tedsluis"]'
+TLS_CA_File='/etc/ssl/certs/ca-certificates.crt'
+
+[fedora]
+lenovo
+msi
+nuc
+
+[fedora:vars]
+ansible_user=root
+accounts='["root", "tedsluis"]'
+TLS_CA_File='/etc/pki/tls/certs/ca-bundle.crt'
+
+[raspbian]
+pihole
+ted1090-[3:4]
+
+[raspbian:vars]
+ansible_user=pi
+accounts='["root", "pi"]'
+TLS_CA_File='/etc/ssl/certs/ca-certificates.crt'
+
+[all:children]
+armbian
+centos
+debian
+fedora
+raspbian
+
+[all:vars]
+gitusername=tedsluis
+gitemailaddress=ted.sluis@gmail.com
+
+emailaddress=ted.sluis@gmail.com
+#emailpassword= ..... stored in /home/tedsluis/.ansible_secrets.yaml
+mailhubhost=smtp.gmail.com
+mailhubport=587
+
+timezone=Europe/Amsterdam
+
+[apt:children]
+armbian
+debian
+raspbian
+
+[dnf:children]
+fedora
+
+[yum:children]
+centos
+
+[homeassistant]
+nuc
