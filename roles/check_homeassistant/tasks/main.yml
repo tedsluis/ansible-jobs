@@ -1,0 +1,170 @@
+---
+# Get sonoff_password
+- name: "Include Ansible secrets to get sonoff_password."
+  include_vars: /home/tedsluis/.ansible_secrets.yaml
+
+- debug:
+    msg: "my sonoff_password is '{{ sonoff_password }}'."
+
+# tasks file for check_homeassistant
+- block:
+    - name: "Test homeassistant {{ homeassistant_url }}"
+      uri:
+        url: "{{ homeassistant_url }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: yes
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 5
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test basic1 {{ basic1_url }}"
+      uri:
+        url: "{{ basic1_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test basic2 {{ basic2_url }}"
+      uri:
+        url: "{{ basic2_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test basic3 {{ basic3_url }}"
+      uri:
+        url: "{{ basic3_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test plug1 {{ plug1_url }}"
+      uri:
+        url: "{{ plug1_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test plug2 {{ plug2_url }}"
+      uri:
+        url: "{{ plug2_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test rfbridge1 {{ rfbridge1_url }}"
+      uri:
+        url: "{{ rfbridge1_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test pow1 {{ pow1_url }}"
+      uri:
+        url: "{{ pow1_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+- block:
+    - name: "Test pow2 {{ pow2_url }}"
+      uri:
+        url: "{{ pow2_url }}"
+        user: "{{ sonoff_username }}"
+        password: "{{ sonoff_password }}"
+        return_content: yes
+        status_code: 200
+        validate_certs: no
+      register: result
+      run_once: true
+      until: not result.failed
+      retries: 2
+      delay: 3
+  always:
+    - debug:
+        var: result
+
+

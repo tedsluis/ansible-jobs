@@ -1,0 +1,21 @@
+# Homeassistant URL
+homeassistant_url: https://tedsluis.duckdns.org:8123
+
+# Sonoff devices
+sonoff_username:   admin
+#sonoff_password:  stored in /home/tedsluis/.ansible_secrets.yaml
+basic1_url:        http://192.168.11.211
+basic2_url:        http://192.168.11.212
+basic3_url:        http://192.168.11.213
+plug1_url:         http://192.168.11.214
+plug2_url:         http://192.168.11.215
+rfbridge1_url:     http://192.168.11.216
+pow1_url:          http://192.168.11.217
+pow2_url:          http://192.168.11.218
+
+# MQTT
+Z2MA_SETTINGS__MQTTUSERNAME: "admin"
+#Z2MA_SETTINGS__MQTTPASSWORD: stored in /home/tedsluis/.ansible_secrets.yaml
+Z2MA_SETTINGS__MQTTSERVER: "192.168.11.100"
+
+
